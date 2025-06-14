@@ -207,6 +207,6 @@ matplotlib
 
 ##### Autor / Versão
 
-* Desenvolvido por: Bruno Matos
-* Data: YYYY-MM-DD
+* Desenvolvido por: Bruno Matos e João Pedro Rego
+* Data: 14/06/2025
 * Versão: 1.0 (versão básica conforme requisitos de sala)
