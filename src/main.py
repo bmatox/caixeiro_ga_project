@@ -257,8 +257,11 @@ def plot_route_3d(coords, route, origin_idx, show_plot=True, save_path=None):
     plt.close()
 
 def main():
+    SEED = 30
+    random.seed(SEED)
+    np.random.seed(SEED)
     parser = argparse.ArgumentParser(description='GA básico para Problema do Caixeiro Viajante 3D')
-    parser.add_argument('--data_path', type=str, default='data/CaixeiroGruposGA.csv',
+    parser.add_argument('--data_path', type=str, default='caixeiro_ga_project\\data\\CaixeiroGruposGA.csv',
                         help='Caminho para o CSV de pontos (colunas X,Y,Z,grupo)')
     parser.add_argument('--origin_idx', type=int, default=0,
                         help='Índice do ponto de origem (linha no CSV, começando em 0)')
@@ -266,15 +269,15 @@ def main():
     parser.add_argument('--n_per_region', type=int, default=None,
                         help='Número de pontos a selecionar por região (30 <= n <= 60). Se None, usa todos do CSV.')
     # Parâmetros do GA
-    parser.add_argument('--pop_size', type=int, default=200, help='Tamanho da população')
+    parser.add_argument('--pop_size', type=int, default=250, help='Tamanho da população') #melhor tamanho de pop encontrado foi 250
     parser.add_argument('--max_gens', type=int, default=8000, help='Número máximo de gerações')
-    parser.add_argument('--tournament_k', type=int, default=3, help='Tamanho do torneio')
-    parser.add_argument('--crossover_prob', type=float, default=0.9, help='Probabilidade de crossover')
+    parser.add_argument('--tournament_k', type=int, default=3, help='Tamanho do torneio') #3 é o melhor torneio, melhor q 2 e 4.
+    parser.add_argument('--crossover_prob', type=float, default=0.92, help='Probabilidade de crossover') #2188
     parser.add_argument('--mutation_prob', type=float, default=0.01, help='Probabilidade de mutação (swap) por indivíduo')
     parser.add_argument('--elitism', type=lambda x: (str(x).lower() in ['true','1','yes']), default=True,
                         help='Usar elitismo? (True/False)')
     parser.add_argument('--elite_size', type=int, default=1, help='Número de indivíduos de elite a manter')
-    parser.add_argument('--no_improve_window', type=int, default=250, help='Gerações de parada sem melhora')
+    parser.add_argument('--no_improve_window', type=int, default=350, help='Gerações de parada sem melhora') #350 um resultado um pouco pior que 450
     parser.add_argument('--use_accept_criterion', type=lambda x: (str(x).lower() in ['true','1','yes']),
                         default=True, help='Usar critério de solução aceitável via heurística NN? (True/False)')
     parser.add_argument('--tolerance', type=float, default=0.05,
