@@ -296,15 +296,15 @@ def main():
     parser.add_argument('--origin_idx', type=int, default=0,
                         help='Índice do ponto de origem (linha no CSV, começando em 0)')
     # Parâmetros do GA
-    parser.add_argument('--pop_size', type=int, default=100, help='Tamanho da população')
-    parser.add_argument('--max_gens', type=int, default=500, help='Número máximo de gerações')
+    parser.add_argument('--pop_size', type=int, default=200, help='Tamanho da população')
+    parser.add_argument('--max_gens', type=int, default=5000, help='Número máximo de gerações')
     parser.add_argument('--tournament_k', type=int, default=3, help='Tamanho do torneio')
     parser.add_argument('--crossover_prob', type=float, default=0.9, help='Probabilidade de crossover')
     parser.add_argument('--mutation_prob', type=float, default=0.01, help='Probabilidade de mutação (swap) por indivíduo')
     parser.add_argument('--elitism', type=lambda x: (str(x).lower() in ['true','1','yes']), default=True,
                         help='Usar elitismo? (True/False)')
     parser.add_argument('--elite_size', type=int, default=1, help='Número de indivíduos de elite a manter')
-    parser.add_argument('--no_improve_window', type=int, default=50, help='Gerações de parada sem melhora')
+    parser.add_argument('--no_improve_window', type=int, default=250, help='Gerações de parada sem melhora')
     parser.add_argument('--use_accept_criterion', type=lambda x: (str(x).lower() in ['true','1','yes']),
                         default=True, help='Usar critério de solução aceitável via heurística NN? (True/False)')
     parser.add_argument('--tolerance', type=float, default=0.05,
