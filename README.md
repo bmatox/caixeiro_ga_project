@@ -191,14 +191,7 @@ numpy
 matplotlib
 ```
 
-## 📖 Referências
-
-* Conceitos de Algoritmos Genéticos: codificação em permutação, seleção por torneio, crossover ordenado, mutação swap, elitismo, critérios de parada.
-* Heurística Nearest Neighbor para TSP como referência de solução aceitável.
-
----
-
-##### Autor / Versão
+##### Autores / Versão
 
 * Desenvolvido por: Bruno Matos e João Pedro Rego
 * Data: 14/06/2025
