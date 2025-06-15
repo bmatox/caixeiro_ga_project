@@ -1,3 +1,4 @@
+````markdown
 # Algoritmo Genético para o Problema do Caixeiro Viajante 3D
 
 Este projeto apresenta uma implementação em Python de um Algoritmo Genético (GA) para resolver uma instância do Problema do Caixeiro Viajante (TSP) em um espaço tridimensional. O objetivo é encontrar uma rota de custo subótimo para um drone que precisa visitar uma série de pontos e retornar à sua origem.
@@ -24,7 +25,7 @@ Certifique-se de ter o Python 3 e as seguintes bibliotecas instaladas:
 
 ```bash
 pip install numpy matplotlib
-```
+````
 
 ### Estrutura de Pastas
 
@@ -84,7 +85,7 @@ O arquivo de dados deve estar localizado em uma pasta `data/` na raiz do projeto
    python main.py --n_per_region 40 --pop_size 300 --mutation_prob 0.1
    ```
 
-### ⚙️ Parâmetros Configuráveis
+## ⚙️ Parâmetros Configuráveis
 
 | Argumento                | Descrição                                                    | Padrão no Código            |
 | ------------------------ | ------------------------------------------------------------ | --------------------------- |
@@ -115,10 +116,12 @@ Foram realizados múltiplos experimentos para analisar o comportamento do algori
 * **Diagnóstico Inicial**:
 
   * Configurações iniciais (população pequena, mutação de 1%) levaram a convergência prematura, com o algoritmo preso em ótimos locais de alto custo (\~4901).
+
 * **Ajuste de Parâmetros**:
 
   * Aumentar a taxa de mutação de 1% para 5% permitiu maior exploração, evitando ótimos locais e melhorando drasticamente o resultado final.
-  * Aumentar a "paciência" do algoritmo (parâmetro `no_improve_window`) para valores maiores (e.g., 250) deu tempo para a diversidade produzida pela mutação gerar soluções melhores.
+  * Aumentar a "paciência" do algoritmo (parâmetro `--no_improve_window`) para valores maiores (e.g., 250) deu tempo para a diversidade produzida pela mutação gerar soluções melhores.
+
 * **Conclusão de Testes**:
 
   * A melhor configuração encontrada durante os testes foi:
@@ -147,11 +150,13 @@ Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
 
    * Lê o CSV, detecta header, extrai colunas X, Y, Z e grupo.
    * Se `--n_per_region` for especificado, amostra exatamente esse número de pontos de cada grupo (30 ≤ n ≤ 60), garantindo inclusão do ponto de origem.
+
 2. **Preparação**
 
    * Calcula a matriz de distâncias Euclidianas 3D.
    * Determina índice da origem no conjunto final.
    * Executa heurística Nearest Neighbor para referência de custo.
+
 3. **Algoritmo Genético Básico**
 
    * **Inicialização**: População de permutações aleatórias (excluindo origem).
@@ -164,10 +169,12 @@ Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
      * Máximo de gerações (`--max_gens`).
      * Sem melhora em `--no_improve_window` gerações.
      * (Opcional) Solução aceitável: custo ≤ heurística NN \* (1 - tol).
+
 4. **Resultados e Visualizações**
 
    * Exibe logs de progresso (se `--verbose=True`).
    * Após término, plota curva de convergência e rota final em 3D e salva em `--output_dir`.
+
 5. **Análise Estatística (Opcional)**
 
    * Com `--n_runs > 1`, executa o GA várias vezes, coleta gerações em que atinge solução aceitável e calcula moda/min/max para análise de estabilidade e impacto de parâmetros.
@@ -175,14 +182,20 @@ Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
 ## 📋 Requisitos Atendidos
 
 1. **Definição de pontos por região**: argumento `--n_per_region` com validação 30 ≤ n ≤ 60.
+
 2. **Definição de N de indivíduos e gerações**: argumentos `--pop_size` e `--max_gens`.
+
 3. **Operador de Seleção (Torneio)**: implementado em `tournament_selection` com `--tournament_k`.
+
 4. **Recombinação de dois pontos sem repetição**: Order Crossover (OX) adequado para permutações.
+
 5. **Mutação de swap 1%**: parâmetro `--mutation_prob=0.01` por padrão, troca de genes.
+
 6. **Critérios de Parada**:
 
    * Máx gerações, sem melhora em janela (`--no_improve_window`), solução aceitável via heurística + tolerância (`--use_accept_criterion`, `--tolerance`).
    * A regra de “sem modificações genotípicas médias” não foi implementada explicitamente, pois a parada por estagnação na aptidão costuma ser suficiente em versão básica.
+
 7. **Análise de Moda de Gerações e Elitismo**: oferecido via `--n_runs` e coleta de gerações atingidas, comparando com/sem elitismo (configurável via `--elitism` e `--elite_size`).
 
 ## 📦 Dependências
@@ -210,3 +223,6 @@ matplotlib
 * Desenvolvido por: Bruno Matos e João Pedro Rego
 * Data: 14/06/2025
 * Versão: 1.0 (versão básica conforme requisitos de sala)
+
+```
+```
