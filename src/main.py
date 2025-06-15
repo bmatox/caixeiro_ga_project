@@ -220,8 +220,14 @@ def main():
     SEED = 30
     random.seed(SEED)
     np.random.seed(SEED)
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(script_dir)
+        default_data_path = os.path.join(project_root, 'data', 'CaixeiroGruposGA.csv')
+    except NameError:
+        default_data_path = 'data/CaixeiroGruposGA.csv'
     parser = argparse.ArgumentParser(description='GA básico para Problema do Caixeiro Viajante 3D')
-    parser.add_argument('--data_path', type=str, default='caixeiro_ga_project\\data\\CaixeiroGruposGA.csv',
+    parser.add_argument('--data_path', type=str, default=default_data_path,
                         help='Caminho para o CSV de pontos (colunas X,Y,Z,grupo)')
     parser.add_argument('--origin_idx', type=int, default=0,
                         help='Índice do ponto de origem (linha no CSV, começando em 0)')
