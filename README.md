@@ -1,4 +1,3 @@
-````markdown
 # Algoritmo Genético para o Problema do Caixeiro Viajante 3D
 
 Este projeto apresenta uma implementação em Python de um Algoritmo Genético (GA) para resolver uma instância do Problema do Caixeiro Viajante (TSP) em um espaço tridimensional. O objetivo é encontrar uma rota de custo subótimo para um drone que precisa visitar uma série de pontos e retornar à sua origem.
@@ -25,7 +24,7 @@ Certifique-se de ter o Python 3 e as seguintes bibliotecas instaladas:
 
 ```bash
 pip install numpy matplotlib
-````
+```
 
 ### Estrutura de Pastas
 
@@ -113,16 +112,16 @@ O arquivo de dados deve estar localizado em uma pasta `data/` na raiz do projeto
 
 Foram realizados múltiplos experimentos para analisar o comportamento do algoritmo e a importância de seus parâmetros:
 
-* **Diagnóstico Inicial**:
+* **Diagnóstico Inicial**
 
   * Configurações iniciais (população pequena, mutação de 1%) levaram a convergência prematura, com o algoritmo preso em ótimos locais de alto custo (\~4901).
 
-* **Ajuste de Parâmetros**:
+* **Ajuste de Parâmetros**
 
   * Aumentar a taxa de mutação de 1% para 5% permitiu maior exploração, evitando ótimos locais e melhorando drasticamente o resultado final.
   * Aumentar a "paciência" do algoritmo (parâmetro `--no_improve_window`) para valores maiores (e.g., 250) deu tempo para a diversidade produzida pela mutação gerar soluções melhores.
 
-* **Conclusão de Testes**:
+* **Conclusão de Testes**
 
   * A melhor configuração encontrada durante os testes foi:
 
@@ -182,20 +181,14 @@ Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
 ## 📋 Requisitos Atendidos
 
 1. **Definição de pontos por região**: argumento `--n_per_region` com validação 30 ≤ n ≤ 60.
-
 2. **Definição de N de indivíduos e gerações**: argumentos `--pop_size` e `--max_gens`.
-
 3. **Operador de Seleção (Torneio)**: implementado em `tournament_selection` com `--tournament_k`.
-
 4. **Recombinação de dois pontos sem repetição**: Order Crossover (OX) adequado para permutações.
-
 5. **Mutação de swap 1%**: parâmetro `--mutation_prob=0.01` por padrão, troca de genes.
-
 6. **Critérios de Parada**:
 
    * Máx gerações, sem melhora em janela (`--no_improve_window`), solução aceitável via heurística + tolerância (`--use_accept_criterion`, `--tolerance`).
    * A regra de “sem modificações genotípicas médias” não foi implementada explicitamente, pois a parada por estagnação na aptidão costuma ser suficiente em versão básica.
-
 7. **Análise de Moda de Gerações e Elitismo**: oferecido via `--n_runs` e coleta de gerações atingidas, comparando com/sem elitismo (configurável via `--elitism` e `--elite_size`).
 
 ## 📦 Dependências
@@ -223,6 +216,3 @@ matplotlib
 * Desenvolvido por: Bruno Matos e João Pedro Rego
 * Data: 14/06/2025
 * Versão: 1.0 (versão básica conforme requisitos de sala)
-
-```
-```
