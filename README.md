@@ -1,9 +1,3 @@
-Com certeza. Li o seu `README.md` e ele está extremamente completo e detalhado. É um ótimo trabalho que resume tudo o que fizemos.
-
-Fiz alguns **ajustes de formatação e estrutura** para deixá-lo um pouco mais organizado e fácil de ler, seguindo o padrão de muitos projetos de software. A essência e todo o conteúdo que você escreveu foram mantidos, apenas reorganizados para maior clareza.
-
-Aqui está a versão revisada:
-
 ---
 ```markdown
 # Algoritmo Genético para o Problema do Caixeiro Viajante 3D
