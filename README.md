@@ -1,10 +1,10 @@
 # Algoritmo Genético para o Problema do Caixeiro Viajante 3D
 
-Este projeto apresenta uma implementação em Python de um Algoritmo Genético (GA) para resolver uma instância do Problema do Caixeiro Viajante (TSP) em um espaço tridimensional. O objetivo é encontrar uma rota de custo subótimo para um drone que precisa visitar uma série de pontos e retornar à sua origem.
+O presente projeto apresenta uma implementação em Python de um Algoritmo Genético (GA) para resolver uma instância do Problema do Caixeiro Viajante (TSP) em um espaço tridimensional. O objetivo é encontrar uma rota de custo subótimo para um drone que precisa visitar uma série de pontos e retornar à sua origem.
 
 O script é flexível, permitindo tanto a utilização do conjunto de dados completo quanto a seleção de um subconjunto de pontos por região, conforme especificado nos requisitos do trabalho.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 * **Implementação de GA "do zero"**: Toda a lógica do algoritmo genético foi implementada utilizando apenas bibliotecas padrão do Python e NumPy.
 * **Amostragem Configurável**: Permite selecionar um número específico de pontos por região a partir do arquivo de dados.
@@ -16,7 +16,7 @@ O script é flexível, permitindo tanto a utilização do conjunto de dados comp
 * **Múltiplos Critérios de Parada**: O algoritmo pode parar ao atingir um número máximo de gerações, ao estagnar por falta de melhora, ou ao encontrar uma solução considerada "aceitável".
 * **Visualização de Resultados**: Gera automaticamente um gráfico da curva de convergência (custo vs. geração) e um plot 3D da melhor rota encontrada.
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 
@@ -131,7 +131,7 @@ Foram realizados múltiplos experimentos para analisar o comportamento do algori
     * `no_improve_window=250`
   * Com essa combinação, obteve-se custo \~2477 na instância testada, embora a heurística Nearest Neighbor tivesse custo \~1813, ilustrando o trade-off entre complexidade de algoritmo e qualidade da solução para o orçamento computacional disponível.
 
-### 🖼️ Exemplo de Saída
+### Exemplo de Saída
 
 * **Curva de Convergência**
   O gráfico abaixo mostra a melhora do custo da melhor solução ao longo das gerações.
@@ -141,7 +141,7 @@ Foram realizados múltiplos experimentos para analisar o comportamento do algori
   A visualização abaixo mostra a rota final encontrada pelo algoritmo, conectando todos os pontos a partir da origem.
   *(Insira aqui o seu gráfico `route_3d.png` ou visualize ao executar)*
 
-## 📁 Organização Sugerida de Código
+## Organização Sugerida de Código
 
 Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
 
@@ -178,20 +178,7 @@ Embora todo o código esteja em `main.py`, a lógica interna segue estas etapas:
 
    * Com `--n_runs > 1`, executa o GA várias vezes, coleta gerações em que atinge solução aceitável e calcula moda/min/max para análise de estabilidade e impacto de parâmetros.
 
-## 📋 Requisitos Atendidos
-
-1. **Definição de pontos por região**: argumento `--n_per_region` com validação 30 ≤ n ≤ 60.
-2. **Definição de N de indivíduos e gerações**: argumentos `--pop_size` e `--max_gens`.
-3. **Operador de Seleção (Torneio)**: implementado em `tournament_selection` com `--tournament_k`.
-4. **Recombinação de dois pontos sem repetição**: Order Crossover (OX) adequado para permutações.
-5. **Mutação de swap 1%**: parâmetro `--mutation_prob=0.01` por padrão, troca de genes.
-6. **Critérios de Parada**:
-
-   * Máx gerações, sem melhora em janela (`--no_improve_window`), solução aceitável via heurística + tolerância (`--use_accept_criterion`, `--tolerance`).
-   * A regra de “sem modificações genotípicas médias” não foi implementada explicitamente, pois a parada por estagnação na aptidão costuma ser suficiente em versão básica.
-7. **Análise de Moda de Gerações e Elitismo**: oferecido via `--n_runs` e coleta de gerações atingidas, comparando com/sem elitismo (configurável via `--elitism` e `--elite_size`).
-
-## 📦 Dependências
+## Dependências
 
 * Python 3.x
 * NumPy
